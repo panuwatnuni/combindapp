@@ -48,6 +48,9 @@ export class LoginPage {
                         subTitle: 'Welcome ' + this.responseData.userData.fullname,
                         buttons: ['Dismiss']
                     }).present()
+                    //save local storage
+                    localStorage.setItem('userData', JSON.stringify(this.responseData))
+                    this.navCtrl.setRoot(TabsPage)
                 } else {
                     this.alertCtrl.create({
                         title: 'FAIL LOGIN',
