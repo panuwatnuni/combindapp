@@ -16,6 +16,11 @@ import { SidePaymentPage } from '../pages/side-payment/side-payment';
 import { SidePortfolioPage } from '../pages/side-portfolio/side-portfolio';
 import { SideSchedulePage } from '../pages/side-schedule/side-schedule';
 import { SideSettingPage } from '../pages/side-setting/side-setting';
+import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
+import { WebapiServiceProvider } from '../providers/webapi-service/webapi-service';
+import { HttpModule } from '@angular/http';
+import { GlobalProvider } from '../providers/global/global';
 
 @NgModule({
     declarations: [
@@ -29,11 +34,14 @@ import { SideSettingPage } from '../pages/side-setting/side-setting';
         TabHomePage,
         TabServicePage,
         TabContactPage,
-        TabsPage
+        TabsPage,
+        RegisterPage,
+        LoginPage
     ],
     imports: [
         BrowserModule,
         IonicModule.forRoot(MyApp),
+        HttpModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -47,12 +55,16 @@ import { SideSettingPage } from '../pages/side-setting/side-setting';
         TabHomePage,
         TabServicePage,
         TabContactPage,
-        TabsPage
+        TabsPage,
+        RegisterPage,
+        LoginPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
-        { provide: ErrorHandler, useClass: IonicErrorHandler }
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+    WebapiServiceProvider,
+    GlobalProvider
     ]
 })
 export class AppModule { }
