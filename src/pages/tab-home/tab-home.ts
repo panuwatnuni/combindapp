@@ -13,7 +13,7 @@ import { LoginPage } from '../login/login';
 export class TabHomePage {
     //อ่านค่าจาก local storage
     userDetail:any
-    loginStatus:boolean
+    loginStatus:boolean 
     logoutStatus:boolean
     constructor(
         public navCtrl: NavController
