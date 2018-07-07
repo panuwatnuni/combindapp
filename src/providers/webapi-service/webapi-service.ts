@@ -7,7 +7,6 @@ export class WebapiServiceProvider {
     constructor(public http: Http
         , public toast: ToastController
         , public global: GlobalProvider) {
-        
     }
 
     //POS
