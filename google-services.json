@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "271231392118",
+    "firebase_url": "https://combindapppush-bundan.firebaseio.com",
+    "project_id": "combindapppush-bundan",
+    "storage_bucket": "combindapppush-bundan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271231392118:android:729d2d5cc0f7f8d3",
+        "android_client_info": {
+          "package_name": "io.ionic.starter.bundan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271231392118-s0f56cilb2mubbmh9p7pv2vkqvoundof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwcf1TubTAxG6EwoZs90zoCqmr17ojdZ4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

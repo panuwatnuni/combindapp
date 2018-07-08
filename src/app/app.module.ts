@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { NativeAudio } from '@ionic-native/native-audio';
 import { MyApp } from './app.component';
+import { FCM } from '@ionic-native/fcm';
+//import { Device } from '@ionic-native/device';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,6 +24,20 @@ import { WebapiServiceProvider } from '../providers/webapi-service/webapi-servic
 import { HttpModule } from '@angular/http';
 import { GlobalProvider } from '../providers/global/global';
 import { CoursedetailPage } from '../pages/coursedetail/coursedetail';
+import { TabChatPage } from '../pages/tab-chat/tab-chat';
+
+//firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { ShowpushdetailPage } from '../pages/showpushdetail/showpushdetail';
+var config = {
+    apiKey: "AIzaSyD698bsIi7kTRnysiy4300Yb_3QXDmvfGw",
+    authDomain: "combindchatapp-bundan.firebaseapp.com",
+    databaseURL: "https://combindchatapp-bundan.firebaseio.com",
+    projectId: "combindchatapp-bundan",
+    storageBucket: "combindchatapp-bundan.appspot.com",
+    messagingSenderId: "540848969392"
+};
 
 @NgModule({
     declarations: [
@@ -38,12 +54,16 @@ import { CoursedetailPage } from '../pages/coursedetail/coursedetail';
         TabsPage,
         RegisterPage,
         LoginPage,
-        CoursedetailPage
+        CoursedetailPage,
+        TabChatPage,
+        ShowpushdetailPage
     ],
     imports: [
         BrowserModule,
         IonicModule.forRoot(MyApp),
-        HttpModule
+        HttpModule,
+        AngularFireModule.initializeApp(config),
+        AngularFireDatabaseModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -60,14 +80,19 @@ import { CoursedetailPage } from '../pages/coursedetail/coursedetail';
         TabsPage,
         RegisterPage,
         LoginPage,
-        CoursedetailPage
+        CoursedetailPage,
+        TabChatPage,
+        ShowpushdetailPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
-    WebapiServiceProvider,
-    GlobalProvider
+        WebapiServiceProvider,
+        GlobalProvider,
+        NativeAudio,
+        FCM,
+      //  Device
     ]
 })
 export class AppModule { }
