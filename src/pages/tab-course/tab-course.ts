@@ -1,25 +1,55 @@
+import { CoursedetailPage } from './../coursedetail/coursedetail';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the TabCoursePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
+import { WebapiServiceProvider } from '../../providers/webapi-service/webapi-service'
+import { GlobalProvider } from '../../providers/global/global'
 
 @IonicPage()
 @Component({
-  selector: 'page-tab-course',
-  templateUrl: 'tab-course.html',
+    selector: 'page-tab-course',
+    templateUrl: 'tab-course.html',
 })
 export class TabCoursePage {
+    responseData:any
+    baseUrl: any
+    constructor(public navCtrl: NavController,
+        public navParams: NavParams
+        , public app: App
+        , public webapi: WebapiServiceProvider
+        , public alertCtrl: AlertController
+        , public global: GlobalProvider) {
+        this.baseUrl = global.baseURLAPI
+    }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    ionViewDidLoad() {
+        this.webapi.getData('feed_course.php').then((res)=> {
+            this.responseData = res
+            console.log(res)
+        },(error)=> {
+            console.log(error)
+        })
+    }
+    courseDetail = (id)=> {
+        this.app.getRootNav().push(CoursedetailPage, {cid:id})
+    }
+    doRefresh(refresher) {
+        console.log('Begin async operation', refresher);
+        //begin
+        setTimeout(() => {
+            //end
+            this.feeddata()
+            console.log('Async operation has ended');
+            refresher.complete();
+        }, 1500);
+    }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabCoursePage');
-  }
-
+    feeddata() {
+        this.webapi.getData('feed_course.php').then((res) => {
+            this.responseData = res
+            console.log(res)
+        }, (error) => {
+            console.log(error)
+        })
+    }
+    
 }

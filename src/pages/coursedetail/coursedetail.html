@@ -1,0 +1,22 @@
+<ion-header>
+
+    <ion-navbar transparent>
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div *ngFor="let index of responseData">
+        <img src="{{baseUrl}}/images/{{index.images}}" width="100%">
+        <div padding>
+            <ion-card-title>
+                {{index.name}}
+            </ion-card-title>
+            <div [innerHtml]="index.description"></div>
+            <p>{{index.price}}</p>
+            <p>{{index.create_at}}</p>
+        </div>
+    </div>
+</ion-content>

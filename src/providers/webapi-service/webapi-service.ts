@@ -38,7 +38,7 @@ export class WebapiServiceProvider {
             headers.append('Authorization', this.global.authKey)
             headers.append('Content-Type', 'application/json')
 
-            this.http.get(this.global.authKey + segment, { headers: headers })
+            this.http.get(this.global.baseURLAPI + segment, { headers: headers })
                 .subscribe(res => {
                     resolve(res.json());
                 }, (err) => {
